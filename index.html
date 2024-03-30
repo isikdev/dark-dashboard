@@ -3,66 +3,80 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Темная Таблица</title>
-        <!-- Подключение Bootstrap CSS -->
+        <title>Интерактивная Таблица с Экспортом</title>
+        <!-- Подключение Bootstrap и DataTables CSS -->
+        <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Подключение Bootstrap JS и зависимостей -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet"
+            href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" />
+        <!-- Подключение jQuery, DataTables и Buttons JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.7.12/umd/popper.min.js"></script>
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <!-- Стили для полноэкранного дизайна -->
+            src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+        <script
+            src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script
+            src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+        <script
+            src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
         <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .container-fluid {
-    height: 100%;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .table-full {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .table-full table {
-    flex-grow: 1;
-    width: 100%; /* Установка ширины таблицы на 100% */
-  }
-  .table-dark {
-    background-color: #212529;
-  }
-  .table-dark th,
-  .table-dark td {
-    border-color: #32383e;
-  }
-  .table-dark thead th {
-    background-color: #343a40;
-    position: sticky;
-    top: 0;
-    z-index: 1020; /* Выше модальных окон Bootstrap */
-  }
-  .table-hover tbody tr:hover {
-    background-color: #495057;
-  }
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-  .table-full {
-  width: 100%;
-  table-layout: fixed;
-}
-
-</style>
+                html, body {
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
+                }
+                .container-fluid {
+                  height: 100%;
+                  padding: 0;
+                  display: flex;
+                  flex-direction: column;
+                }
+                .table-full {
+                  flex-grow: 1;
+                  display: flex;
+                  flex-direction: column;
+                }
+                .table-full table {
+                  flex-grow: 1;
+                  width: 100%;
+                  table-layout: fixed;
+                }
+                .table-dark {
+                  background-color: #212529;
+                }
+                .table-dark th,
+                .table-dark td {
+                  border-color: #32383e;
+                }
+                .table-dark thead th {
+                  background-color: #343a40;
+                  position: sticky;
+                  top: 0;
+                  z-index: 1020;
+                }
+                .table-hover tbody tr:hover {
+                  background-color: #495057;
+                }
+                .table-striped tbody tr:nth-of-type(odd) {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                /* Убираем отступы у заголовка и таблицы */
+                h2 {
+                  margin-bottom: 0;
+                }
+                .table-full {
+                  margin-top: 0;
+                }
+                
+              </style>
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 0 0;">
             <h2 class="mb-3 text-center text-white bg-dark py-3">
                 Дашборд Панель</h2>
             <div class="table-full">
@@ -109,4 +123,14 @@
         </div>
     </body>
     <script src="./script.js"></script>
+    <!-- <script>
+        $(document).ready(function() {
+  $('#example').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
+  });
+});
+    </script> -->
 </html>

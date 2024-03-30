@@ -1,0 +1,54 @@
+h2 {
+    margin-bottom: 0;
+}
+
+/* Убираем верхний отступ у таблицы */
+.table-full {
+    margin-top: 0;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #343a40;
+}
+.container-fluid {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.table-full {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.table-full table {
+    flex-grow: 1;
+    width: 100%; /* Установка ширины таблицы на 100% */
+}
+.table-dark {
+    background-color: #212529;
+}
+.table-dark th,
+.table-dark td {
+    border-color: #32383e;
+}
+.table-dark thead th {
+    background-color: #343a40;
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Выше модальных окон Bootstrap */
+}
+.table-hover tbody tr:hover {
+    background-color: #495057;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.table-full {
+    width: 100%;
+    table-layout: fixed;
+}
