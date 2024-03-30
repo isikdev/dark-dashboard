@@ -1,18 +1,9 @@
-h2 {
-    margin-bottom: 0;
-}
-
-/* Убираем верхний отступ у таблицы */
-.table-full {
-    margin-top: 0;
-}
-
+/* styles.css */
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #343a40;
 }
 .container-fluid {
     height: 100%;
@@ -27,7 +18,8 @@ body {
 }
 .table-full table {
     flex-grow: 1;
-    width: 100%; /* Установка ширины таблицы на 100% */
+    width: 100%;
+    table-layout: fixed;
 }
 .table-dark {
     background-color: #212529;
@@ -40,7 +32,7 @@ body {
     background-color: #343a40;
     position: sticky;
     top: 0;
-    z-index: 1020; /* Выше модальных окон Bootstrap */
+    z-index: 1020;
 }
 .table-hover tbody tr:hover {
     background-color: #495057;
@@ -48,7 +40,21 @@ body {
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.05);
 }
+/* Убираем отступы у заголовка и таблицы */
+h2 {
+    margin-bottom: 0;
+}
 .table-full {
-    width: 100%;
-    table-layout: fixed;
+    margin-top: 0;
+}
+.export-buttons {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.export-buttons .dt-button {
+    margin: 0 5px;
 }

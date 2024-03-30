@@ -39,49 +39,60 @@ function generateMeaningfulRandomData() {
 
 // Функция для создания кнопки статуса
 function createStatusButton(status) {
-    const button = document.createElement('button');
-    button.textContent = status;
+    const button = $('<button>').text(status);
     switch (status) {
         case 'новые':
-            button.className = 'btn btn-success';
+            button.addClass('btn btn-success');
             break;
         case 'на чеке':
-            button.className = 'btn btn-warning';
+            button.addClass('btn btn-warning');
             break;
         case 'невалид':
-            button.className = 'btn btn-danger';
+            button.addClass('btn btn-danger');
             break;
         default:
-            button.className = 'btn btn-secondary';
+            button.addClass('btn btn-secondary');
     }
-    return button.outerHTML; // Возвращаем HTML-код кнопки
+    return button.prop('outerHTML'); // Возвращаем HTML-код кнопки
 }
 
 // Функция для добавления сгенерированных данных в таблицу
 function addDataToTable(data) {
-    const tableBody = document.querySelector('.table-full tbody');
-    data.forEach((row, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-        <th scope="row">${index + 1}</th>
-        <td>${row.link}</td>
-        <td>${row.login}</td>
-        <td>${row.pass}</td>
-        <td>${row.comment}</td>
-        <td>${row.zoominfo}</td>
-        <td>${row.revenue}</td>
-        <td>${row.industry1}</td>
-        <td>${row.industry2}</td>
-        <td>${createStatusButton(row.status)}</td> <!-- Статус теперь в виде кнопки -->
-        <td>${row.inWork}</td>
-        <td>${row.conditions}</td>
-      `;
-        tableBody.appendChild(tr);
+    const tableBody = $('.table-full tbody');
+    $.each(data, function (index, row) {
+        const tr = $('<tr>').append(
+            $('<th>').attr('scope', 'row').text(index + 1),
+            $('<td>').text(row.link),
+            $('<td>').text(row.login),
+            $('<td>').text(row.pass),
+            $('<td>').text(row.comment),
+            $('<td>').text(row.zoominfo),
+            $('<td>').text(row.revenue),
+            $('<td>').text(row.industry1),
+            $('<td>').text(row.industry2),
+            $('<td>').html(createStatusButton(row.status)),
+            $('<td>').text(row.inWork),
+            $('<td>').text(row.conditions)
+        );
+        tableBody.append(tr);
     });
 }
 
 // Генерация и добавление данных при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function () {
     const meaningfulRandomData = generateMeaningfulRandomData();
     addDataToTable(meaningfulRandomData);
+});
+
+$(document).ready(function () {
+    var table = $('#example').DataTable({
+        dom: 'Brtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+
+    // Добавление кнопок в фиксированное положение внизу страницы
+    table.buttons().container()
+        .appendTo($('.export-buttons'));
 });
