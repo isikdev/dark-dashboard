@@ -71,8 +71,6 @@ function addDataToTable(data) {
             $('<td>').text(row.industry1),
             $('<td>').text(row.industry2),
             $('<td>').html(createStatusButton(row.status)),
-            $('<td>').text(row.inWork),
-            $('<td>').text(row.conditions)
         );
         tableBody.append(tr);
     });
